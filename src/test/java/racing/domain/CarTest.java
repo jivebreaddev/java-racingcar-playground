@@ -13,6 +13,7 @@ public class CarTest {
 
   public static final String CAR_NAME = "five";
   public static final String ILLEGAL_NAME = "fiveguys";
+  public static final int ZERO_POSITION = 0;
 
   @Test
   @DisplayName("자동차 이름은 5글자 이하일때 생성된다.")
@@ -22,7 +23,6 @@ public class CarTest {
     //WHEN
     Car car = Car.of(CAR_NAME);
     //THEN
-
     assertThat(car.equals(Car.of(CAR_NAME))).isEqualTo(true);
   }
 
@@ -41,19 +41,28 @@ public class CarTest {
   @DisplayName("랜덤 값이 4이 상인 경우 자동차는 전진한다.")
   void CarMove() {
     //GIVEN
-    Car car = Car.of(CAR_NAME);
-
+    Car car = Car.of(CAR_NAME, ZERO_POSITION);
     //WHEN
-
+    RandomStrategy randomStrategy = new RandomMoveStrategy(){
+      @Override
+      public boolean isValid(){
+        return true;
+      }
+    };
+    car.move(randomStrategy);
     //THEN
+    assertThat(car.equalPosition(CarPosition.of(1))).isEqualTo(true);
   }
 
   @Test
   @DisplayName("자동차를 toString 했을때 position에 따른 -- 갯수가 달라진다.")
   void CarToString() {
     //GIVEN
+    Car oldCar = Car.of(CAR_NAME, 1);
     //WHEN
+    String print = oldCar.toString();
     //THEN
+    assertThat(print.equals("five : -"));
   }
 
 }
