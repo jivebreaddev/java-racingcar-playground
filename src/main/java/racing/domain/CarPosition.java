@@ -48,4 +48,9 @@ public class CarPosition {
   public CarPosition move() {
     return CarPosition.of(carPosition + 1);
   }
+
+  public int getCarPosition(){
+    return carPosition;
+  }
+
 }

@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Car {
   public static final int START_POSITION = 0;
-  CarName carName;
+  final CarName carName;
   CarPosition carPosition;
 
   private Car(CarName carName, CarPosition carPosition) {
@@ -59,5 +59,20 @@ public class Car {
   @Override
   public int hashCode() {
     return Objects.hash(carName, carPosition);
+  }
+
+  public CarPosition getMaxPosition(CarPosition maxPosition) {
+    if (lessThan(maxPosition)){
+      return maxPosition;
+    }
+    return carPosition;
+  }
+
+  private boolean lessThan(CarPosition position){
+    return carPosition.getCarPosition() < position.getCarPosition();
+  }
+
+  public boolean isWinner(CarPosition maxPosition) {
+    return carPosition.equals(maxPosition);
   }
 }
