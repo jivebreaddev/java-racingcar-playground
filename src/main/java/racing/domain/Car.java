@@ -5,20 +5,16 @@ import org.apache.commons.lang3.StringUtils;
 
 
 public class Car {
-  String carName;
-  private Car(String carName) {
+
+  CarName carName;
+
+  private Car(CarName carName) {
     this.carName = carName;
   }
 
-  public static Car of(String carName){
-    if(!Car.isValid(carName)){
-      throw new IllegalArgumentException("자동차의 이름값을 확인해주세요");
-    }
+  public static Car of(String name) {
+    CarName carName = CarName.of(name);
     return new Car(carName);
-  }
-
-  public static boolean isValid(String carName){
-    return !StringUtils.isBlank(carName) && carName.length() <= 5;
   }
 
   @Override

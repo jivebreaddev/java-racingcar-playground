@@ -16,7 +16,7 @@ public class CarTest {
 
   @Test
   @DisplayName("자동차 이름은 5글자 이하일때 생성된다.")
-  void CarNameLessThanFive(){
+  void CarNameLessThanFive() {
     //GIVEN
 
     //WHEN
@@ -25,9 +25,10 @@ public class CarTest {
 
     assertThat(car.equals(Car.of(CAR_NAME))).isEqualTo(true);
   }
+
   @Test
   @DisplayName("자동차 이름은 5글자 초과일때 오류를 던진다")
-  void CarName(){
+  void CarName() {
     //GIVEN
 
     //WHEN
@@ -38,7 +39,7 @@ public class CarTest {
 
   @Test
   @DisplayName("랜덤 값이 4이 상인 경우 자동차는 전진한다.")
-  void CarMove(){
+  void CarMove() {
     //GIVEN
     Car car = Car.of(CAR_NAME);
 
@@ -49,7 +50,7 @@ public class CarTest {
 
   @Test
   @DisplayName("자동차를 toString 했을때 position에 따른 -- 갯수가 달라진다.")
-  void CarToString(){
+  void CarToString() {
     //GIVEN
     //WHEN
     //THEN
